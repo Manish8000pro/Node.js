@@ -4,7 +4,7 @@ const users = require("./MOCK_DATA.json")
 const app = express();
 const PORT = 8000;
 
-app.use(express.json());
+// app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 
@@ -22,9 +22,9 @@ app.get("/users",(req,res) =>{
 }); 
 
 //REST API
-// app.get("/api/users",(req,res) => {
-//     return res.json(users);
-// });
+app.get("/api/users",(req,res) => {
+    return res.json(users);
+});
 
 
 app
@@ -44,6 +44,8 @@ app
 });
 
 app.post("/api/users",(req,res) => {
+    const body = req.body;
+    console.log("Body",body)
     return res.json({status:"Pending"});
 });
 
