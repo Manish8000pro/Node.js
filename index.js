@@ -42,13 +42,6 @@ app
     return res.json({status:"Pending"});
 });
 
-app.post("/api/users", (req, res) => {
-    const newUser = {
-        id: users.length + 1,
-        ...req.body
-    };
-    users.push(newUser);
-    return res.json(newUser);
-});
+
 
 app.listen(PORT,() => console.log( `Server started at Port:${PORT}`));
