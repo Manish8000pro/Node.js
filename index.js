@@ -42,6 +42,8 @@ app
     return res.json({status:"Pending"});
 });
 
-
+app.post("/api/users",(req,res) => {
+    return res.json({status:"Pending"});
+});
 
 app.listen(PORT,() => console.log( `Server started at Port:${PORT}`));
