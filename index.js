@@ -21,9 +21,9 @@ app.get("/users",(req,res) =>{
 });
 
 //REST API
-app.get("/api/users",(req,res) => {
-    return res.json(users);
-});
+// app.get("/api/users",(req,res) => {
+//     return res.json(users);
+// });
 
 
 app
