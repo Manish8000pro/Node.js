@@ -1,6 +1,9 @@
 const express = require("express");
 const users = require("./MOCK_DATA.json")
 
+const fs = require('fs');
+const { json } = require("stream/consumers");
+
 const app = express();
 const PORT = 8000;
 
@@ -45,8 +48,11 @@ app
 
 app.post("/api/users",(req,res) => {
     const body = req.body;
-    console.log("Body",body)
-    return res.json({status:"Pending"});
+    users.push({...body,id:users.length+1});
+    fs.writeFile('./MOCK_DATA.json',JSON.stringify(users),(err,data)=>{
+        return res.json({status:"Success",id:users.length});
+    });
+    
 });
 
 app.listen(PORT,() => console.log( `Server started at Port:${PORT}`));
