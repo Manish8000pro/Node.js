@@ -4,6 +4,9 @@ const users = require("./MOCK_DATA.json")
 const app = express();
 const PORT = 8000;
 
+app.use(express.json());
+
+
 // Routs
 app.get("/users",(req,res) =>{
 
@@ -39,9 +42,13 @@ app
     return res.json({status:"Pending"});
 });
 
-app.post("api/users",(req,res)  =>{
-    //TODO =  create new user
-    return res.json({status:"Pending"});
-})
+app.post("/api/users", (req, res) => {
+    const newUser = {
+        id: users.length + 1,
+        ...req.body
+    };
+    users.push(newUser);
+    return res.json(newUser);
+});
 
 app.listen(PORT,() => console.log( `Server started at Port:${PORT}`));
